@@ -10,6 +10,6 @@ def prime_num_generator(n):
             yield i
 
 if __name__ == '__main__':
-    a = prime_num_generator(10)
+    a = prime_num_generator(100)
     for i in range(0, 50):
         print(next(a))
