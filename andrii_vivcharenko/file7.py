@@ -15,7 +15,8 @@ def todo_console_app():
         1. Create a new todo
         2. Delete a todo by id
         3. Show all my todo
-        4. Log out
+        4. Edit todo by id
+        5. Log out
         """)
         choice = input("Enter an option: ")
         if choice == "1":
@@ -25,7 +26,9 @@ def todo_console_app():
             delete_todo(conn, input("Id: "), user[0])
         elif choice == "3":
             print(get_todo_by_owner(conn, user[0]))
-        elif choice == "4":
+        elif choice == '4':
+            update_todo(conn, input("Id: "), input("Title: "), user[0])
+        elif choice == "5":
             user = None
             user = login_form(conn, user)
             if user is None:
@@ -57,6 +60,11 @@ def login_form(conn, user):
         elif choice == "3":
             break
     return user
+
+def update_todo(conn, id, title, owner):
+    c = conn.cursor()
+    c.execute("UPDATE todo SET title=? WHERE id=?", (title, id))
+    conn.commit()
 
 def delete_todo(conn, id, owner):
     c = conn.cursor()
