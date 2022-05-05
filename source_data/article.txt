@@ -1,0 +1,49 @@
+Python is a Bad Programming Language
+I’ll say it again: Python is a bad programming language, and the only reason it’s so popular today is because Google pushed it so hard in the first decade of the 2000s.
+
+The creator of Python, Guido van Rossum, actually worked at Google from 2005 to 2012. Go and Dart weren’t around back then (or at least they weren’t well known) and with C# gaining in popularity (stealing would-be Java developers) Google probably felt they needed a language of their own. They probably would have wanted to embrace Java, as they were already using it with Android, but they must have been paranoid about getting into bed with it because they were already running into legal issues with Oracle. So for whatever reason, they adopted Python. I imagine in an alternate universe they could have chosen, say, Lua, and maybe in that universe Lua would have become the dominant language today. Of course Lua is kinda weird, so it’s probably better they didn’t choose that one after all.
+
+But let’s talk about why Python sucks. It can be difficult to talk about why something sucks, especially when it’s popular, but this article will be an attempt. I’m going to be covering the language itself, not its performance or its implementation. I’ll be mostly comparing it to Java and C#, as these are two well-known, mature languages that have had plenty of real-world use in the software industry for over fifteen years.
+
+A Fragmented Language
+For a very long time, Python had two major versions running around in the wild. They are, of course, Python 2 and 3, and they’re incompatible with each other. So you were put in this weird situation where Google would say “come on guys, learn some Python, it’s cool!” and then you would go to download it, and you would be given the choice between versions 2 and 3, and maybe Google would tell you “pick 3!” and others would tell you “pick 2!” and then you would find out that 3 barely had any compatible libraries and no one used it, and the only reason why 3 was developed was for adding parentheses to the print function and emoji support. Only recently has the situation gotten any better. Ubuntu, for instance, recently phased out Python 2.
+
+Ugly Object Orientation
+A class in Python looks like this:
+
+
+I hope you like those self keywords, because you’re going to see them everywhere in Python.
+
+That’s the way of referring to the instance variables of a class. It’s like the this keyword in Java or C#, only in Python they’re required, because Python is dumb.
+
+Notice how this class has 2 instance variables: color and wheels? See how I have to both declare and initialize them in the constructor? Another example of Python stupidity.
+
+You may be wondering “how do I make them private instance variables?” Well, the answer is you don’t. You can’t. There is no such thing as private instance variables in Python.
+
+The best you can do in Python is to start them with two underscores, like so: self.__color = “red”
+
+What that does is cause the Python interpreter to mangle the name of the variable so it’s not accessible from outside the class (though with some persistence you could still access the variable from outside the class if you wanted to). So it doesn’t become a private variable, but it gets mangled.
+
+Sure, it works, but come on. Want to define a private instance variable in C# or Java? Put the keyword private in front of it.
+
+If you ask a Python developer about this, they’ll respond with: “don’t access the instance variables of another class, lol”. In general, when you point out any flaws in their language, Python developers will act hostile and condescending.
+
+Whitespace
+Ah, whitespace. Another reason why Python is garbage. In a sane language scope delimiting is done with curly braces, or BEGIN and END keywords, or something similar. But not in Python! Python thought it would be neat to give semantic meaning to whitespace. Why on earth would they give semantic meaning to something that cannot be seen? Who thought that was a good idea?
+
+The co-founder of Reddit, Steve Huffman, has said:
+
+When we hire new employees … I don’t think we’ve yet hired an employee who knew Python. I just say, “everything you write needs to be in Python.” Just so I can read it. And it’s awesome because I can see from across the room, looking at their screen, whether their code is good or bad.
+
+So even if I wanted to believe this guy is capable of doing code reviews from across the room, how is using whitespace any better than curly braces? In almost any other modern language, using indentation is the norm when writing methods. And only in Python will the difference between tabs and spaces cause the interpreter to have a heart attack.
+
+Dynamic Typing
+Dynamic typing is bad, and anyone who disagrees with me probably hasn’t written enough software to realize it yet. With dynamic typing, the larger your program grows, the more unmaintainable it becomes. I predict that in the future all mainstream programming languages will be statically typed, and using a dynamically typed language will be like using a bow and arrow. You’ll be able to watch people programming with dynamically typed languages on the YouTube channel Primitive Technology. Languages that have appeared more recently, such as TypeScript, give me hope.
+
+Some Python programmers have realized that dynamic typing is bad, so now we have mypy, but if you’re going to add type annotations to Python, why wouldn’t you just use a language like Java or C# in the first place?
+
+Constants
+Python has no constants. I mean, what did you expect if you made it this far in the article? The question of making a variable constant came up on Stack Overflow and a Python developer’s advice was “just don’t change it”.
+
+The Emperor Has No Clothes
+Python is a case study in how people will try to live with something, adapt to it, and rationalize their love of it, warts and all, instead of throwing it out and finding something better. In that way maybe it’s a message of love, or hope, or something? Somehow, this subpar language from 1991 has surpassed several more recent languages, and it might be too late to do anything about it. In 2014, it became the most popular introductory teaching language at universities. So we’re going to start seeing more kids entering the industry with Python as their main language, and Python will only grow in popularity as more and more software is written in it. At the time of this writing, it’s currently ranked #2 on the TIOBE index, and that company designated Python “the Programming Language of Year 2020”. If you want to do machine learning and data science in 2021, the answer is to use Python, as it’s the language with the most library support. At least we can be thankful Google didn’t choose Brainfuck.
